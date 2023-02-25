@@ -1,17 +1,17 @@
 steps:
-- name: gcr.io/cloud-builders/docker
-  args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/NAMA-IMAGES:v.1.0.alpha', '.']
-- name: 'gcr.io/cloud-builders/docker'
-  args: ["push", "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/NAMA-IMAGES:v.1.0.alpha"]
-- name: 'gcr.io/cloud-builders/gcloud'
-  args:
-  - 'run'
-  - 'deploy'
-  - 'NAMA-IMAGES'
-  - '--image'
-  - 'asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/NAMA-IMAGES:v.1.0.alpha'
-  - '--region'
-  - 'asia-southeast2'
-  - '--platform'
-  - 'managed'
-  - '--allow-unauthenticated'
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna:v.1.0.alpha", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna:v.1.0.alpha"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "risna"
+      - "--image"
+      - "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna:v.1.0.alpha"
+      - "--region"
+      - "asia-southeast2"
+      - "--platform"
+      - "managed"
+      - "--allow-unauthenticated"
