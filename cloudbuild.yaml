@@ -1,17 +1,17 @@
-steps: 
-- name: gcr.io/cloud-builders/docker 
-  args: ['build', '-t', 'asia-southeast2-docker.pkg.dev/satdev-magang/alpha/back_end:v.0.1', '.'] 
-- name: 'gcr.io/cloud-builders/docker' 
-  args: ["push", "asia-southeast2-docker.pkg.dev/satdev-magang/alpha/back_end:v.0.1"] 
-- name: 'gcr.io/cloud-builders/gcloud' 
-  args: 
-  - 'run' 
-  - 'deploy' 
-  - 'backend' 
-  - '--image' 
-  - 'asia-southeast2-docker.pkg.dev/satdev-magang/alpha/back_end:v.0.1' 
-  - '--region' 
-  - 'asia-southeast2' 
-  - '--platform' 
-  - 'managed' 
-  - '--allow-unauthenticated'
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: ["build", "-t", "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna/back_end:v.0.1", "."]
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna/back_end:v.0.1"]
+  - name: "gcr.io/cloud-builders/gcloud"
+    args:
+      - "run"
+      - "deploy"
+      - "back_end"
+      - "--image"
+      - "asia-southeast2-docker.pkg.dev/sat-kapita-selekta-b/ks-se-2023/risna/back_end:v.0.1"
+      - "--region"
+      - "asia-southeast2"
+      - "--platform"
+      - "managed"
+      - "--allow-unauthenticated"
