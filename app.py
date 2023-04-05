@@ -32,3 +32,4 @@ app = falcon.App()
 
 app.add_route('/products', Products())
 app.add_route('/users', Users())
+app.add_route("/price", GetPrice())
