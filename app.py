@@ -1,4 +1,5 @@
 import falcon
+import connDB
 
 class Products:
     def on_get(self, req, resp):
@@ -17,6 +18,15 @@ class Users:
         ]
         resp.media = users
         resp.status = falcon.HTTP_200
+
+class GetPrice:
+    def on_get(self, req, resp):
+        query = "SELECT current_date"
+        data = connDB.select()
+
+        resp.media = data
+        resp.status = falcon.HTTP_200
+
 
 app = falcon.App()
 
