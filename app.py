@@ -5,7 +5,7 @@ from waitress import serve
 from connectdb import conn
 
 from API.booking import Booking
-from API.booking import Testimoni
+from API.testimoni import Testimoni
 
 
 
@@ -18,6 +18,6 @@ app = falcon.API()
 
 # Tambahkan route untuk login dan halaman terproteksi
 app.add_route('/booking', Booking())
-app.add_route('/booking', Testimoni())
+app.add_route('/testimoni', Testimoni())
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=8000)

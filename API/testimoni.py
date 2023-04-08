@@ -5,7 +5,7 @@ from datetime import datetime, timedelta, timezone
 from query.testimoni import query_testimoni
 
 
-class Booking:
+class Testimoni:
    def on_post(self, req, resp):
       nama = req.media.get('nama') 
       testimoni = req.media.get('testimoni') 
