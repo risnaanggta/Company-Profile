@@ -1,6 +1,6 @@
 import connectdb
 
-def query_booking(nama, testimoni):
+def query_testimoni(nama, testimoni):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
