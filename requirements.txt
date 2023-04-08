@@ -1,2 +1,6 @@
 falcon
 gunicorn
+waitress
+psycopg2
+falcon_cors
+PyJwt
