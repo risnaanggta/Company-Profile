@@ -1,6 +1,6 @@
 import connectdb
 
-def query_testimoni(nama, testimoni):
+def query_testimoni(id, nama, testimoni):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
@@ -13,7 +13,7 @@ def query_testimoni(nama, testimoni):
         return False
 
 #query update user testimoni
-def query_testimoni(nama, testimoni):
+def query_testimoni(id, nama, testimoni):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
@@ -25,7 +25,7 @@ def query_testimoni(nama, testimoni):
         return False
 
 #query delete user testimoni
-def query_testimoni(nama, testimoni):
+def query_testimoni(id, nama, testimoni):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()

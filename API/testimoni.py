@@ -14,7 +14,9 @@ class Testimoni:
       if not id or not nama or not testimoni:
          resp.status = falcon.HTTP_BAD_REQUEST
          return
-      user = query_testimoni(nama, testimoni)
+      
+      user = query_testimoni(id, nama, testimoni)
+
       if user is True:
          resp.status = falcon.HTTP_200
          resp.media = {'message': 'Berhasil memberi testimoni'}
@@ -22,16 +24,15 @@ class Testimoni:
          resp.status = falcon.HTTP_401
          resp.media = {'message': 'Gagal memberi testimoni'}
 
-   def on_delete(self, req, resp, id):
-        # Menghapus testimoni dengan id tertentu
-        result = query_testimoni(id)
-        
-        if result is True:
-            resp.status = falcon.HTTP_200
-            resp.media = {'message': 'Testimoni berhasil dihapus'}
-        else:
-            resp.status = falcon.HTTP_404
-            resp.media = {'message': 'Testimoni tidak ditemukan'}
+   def on_delete(self, resp, id):
+      user = query_testimoni(id)
+      if user is True:
+         resp.status = falcon.HTTP_204
+         resp.media = {'message': 'Berhasil menghapus testimoni'}
+      else:
+         resp.status = falcon.HTTP_404
+         resp.media = {'message': 'Gagal menghapus testimoni'}
+
 
    def on_put(self, req, resp):
       id = req.media.get('id') 
