@@ -1,4 +1,4 @@
-import falcon, jwt 
+import falcon, jwt
 from datetime import datetime, timedelta, timezone
 
 
