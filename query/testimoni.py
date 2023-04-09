@@ -17,7 +17,7 @@ def query_testimoni(id, nama, testimoni):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
-        cur.executecur.execute("UPDATE _672020237_pb_testimoni (id, nama, testimoni) VALUES (%s, %s, %s)", (id, nama, testimoni))
+        cur.execute("UPDATE _672020237_pb_testimoni (id, nama, testimoni) VALUES (%s, %s, %s)", (id, nama, testimoni))
         conn.commit()
         cur.close()
         return True
