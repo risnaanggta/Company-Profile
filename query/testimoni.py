@@ -27,10 +27,6 @@ def query_add_testimoni(nama, testimoni):
     if conn is not None:
         cur = conn.cursor()
         
-        # Simpan gambar ke folder di backend
-      
-        
-        # Simpan informasi produk ke database
         cur.execute("INSERT INTO _672020237_pb_testimoni (nama, testimoni) VALUES (%s, %s)", (nama, testimoni))
         conn.commit()
         cur.close()
