@@ -4,3 +4,4 @@ waitress
 psycopg2
 falcon_cors
 PyJwt
+werkzeug
