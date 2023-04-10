@@ -12,8 +12,8 @@ def query_get_all_testimoni():
         testimoni = []
         for row in rows:
             testimoni = {
-                "id": row[0],
-                "nama": row[0],
+                "id": row[1],
+                "nama": row[1],
                 "testimoni": row[1]
             }
             testimoni.append(testimoni)

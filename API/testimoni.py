@@ -77,4 +77,4 @@ class GetTestimoniById:
             resp.media = { 'testimoni': testimoni}
         else:
             resp.status = falcon.HTTP_401
-            resp.media = {'message': 'Product not found'}
+            resp.media = {'message': 'Testimoni not found'}
