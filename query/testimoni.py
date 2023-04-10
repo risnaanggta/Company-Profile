@@ -31,7 +31,7 @@ def query_add_testimoni(nama, testimoni):
       
         
         # Simpan informasi produk ke database
-        cur.execute("INSERT INTO _672020237_pb_testimoni (nama, testimoni) VALUES (%s, %s)", (nama, testimoni))
+        cur.execute("INSERT INTO _672020237_pb_testimoni (id, nama, testimoni) VALUES (DEFAULT, %s, %s)", (nama, testimoni))
         conn.commit()
         cur.close()
         return True
