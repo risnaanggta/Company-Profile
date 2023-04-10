@@ -16,14 +16,14 @@ class ReadTestimoni:
             resp.media = {'message': 'Testimoni not found'}
 
 class AddTestimoni:
-   def on_post(self, req, resp):
-        id = req.media.get('id') 
+   def on_post(self, req, resp): 
         nama = req.media.get('nama') 
         testimoni = req.media.get('testimoni') 
-        if not id or not nama or not testimoni:
+
+        if not nama or not testimoni:
             resp.status = falcon.HTTP_BAD_REQUEST
             return
-        testimoni = query_add_testimoni(id, nama, testimoni)
+        testimoni = query_add_testimoni(nama, testimoni)
         if testimoni is True:
             resp.status = falcon.HTTP_200
             resp.media = {'message': 'Add testimoni berhasil'}
@@ -49,15 +49,15 @@ class DeleteTestimoni:
 
 class UpdateTestimoni :
     def on_put(self, req, resp):
-        id = req.media.get('id') 
         nama = req.media.get('nama') 
         testimoni = req.media.get('testimoni')
+        id = req.media.get('id') 
        
         testimoni = req.media.get('id')
-        if not id or not nama or not testimoni:
+        if not nama or not testimoni:
             resp.status = falcon.HTTP_BAD_REQUEST
             return
-        testimoni = query_update_testimoni(id, nama, testimoni)
+        testimoni = query_update_testimoni(nama, testimoni, id)
         if testimoni is True:
             resp.status = falcon.HTTP_200
             resp.media = {'message': 'Update testimoni berhasil'}

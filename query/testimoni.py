@@ -12,9 +12,9 @@ def query_get_all_testimoni():
         testimoni = []
         for row in rows:
             testimoni = {
-                "id": row[1],
-                "nama": row[1],
-                "testimoni": row[1]
+                "nama": row[0],
+                "testimoni": row[1],
+                "id": row[2],
             }
             testimoni.append(testimoni)
         return testimoni
@@ -22,7 +22,7 @@ def query_get_all_testimoni():
         print("Connection Failed")
         return None
 
-def query_add_testimoni(id, nama, testimoni):
+def query_add_testimoni(nama, testimoni):
     conn = connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
@@ -31,7 +31,7 @@ def query_add_testimoni(id, nama, testimoni):
       
         
         # Simpan informasi produk ke database
-        cur.execute("INSERT INTO _672020237_pb_testimoni (id, nama, testimoni) VALUES (%s, %s, %s)", (id, nama, testimoni))
+        cur.execute("INSERT INTO _672020237_pb_testimoni (nama, testimoni) VALUES (%s, %s)", (nama, testimoni))
         conn.commit()
         cur.close()
         return True
@@ -40,11 +40,11 @@ def query_add_testimoni(id, nama, testimoni):
         return False
 
 #query update testimoni
-def query_update_testimoni(id, nama, testimoni):
+def query_update_testimoni(nama, testimoni, id):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
-        cur.execute("UPDATE _672020237_pb_testimoni SET nama = %s, testimoni = %s WHERE id = %s", (id, nama, testimoni))
+        cur.execute("UPDATE _672020237_pb_testimoni SET nama = %s, testimoni = %s WHERE id = %s", (nama, testimoni, id))
         conn.commit()
         cur.close()
         return True
@@ -72,9 +72,17 @@ def query_get_testimoni_by_id(id):
     if conn is not None:
         cur = conn.cursor()
         
-        cur.execute("SELECT nama, testimoni id FROM public.\"_672020237_pb_testimoni\" WHERE id = %s", (id,))
-        testimoni = cur.fetchone()
+        cur.execute("SELECT nama, testimoni, id FROM public.\"_672020237_pb_testimoni\" WHERE id = %s", (id,))
+        rows = cur.fetchall()
         cur.close()
+        testimoni = []
+        for row in rows:
+            testimoni = {
+                "nama": row[0],
+                "testimoni": row[1],
+                "id": row[2]
+            }
+            testimoni.append(testimoni)
         return testimoni
     else:
         print("Connection Failed")
