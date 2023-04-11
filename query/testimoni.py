@@ -35,17 +35,5 @@ def query_add_testimoni(nama, testimoni):
         return False
 
 
-#query delete testimoni
-def query_delete_testimoni(nama):
-    conn=connectdb.test_connection()
-    if conn is not None:
-        cur = conn.cursor()
-        cur.execute("DELETE FROM _672020237_pb_testimoni WHERE nama = %s", (nama))
-        conn.commit()
-        cur.close()
-        return True
-    else:
-        print("Connection Failed")
-        return False
     
     

@@ -5,7 +5,7 @@ from waitress import serve
 from connectdb import conn
 
 from API.booking import Booking
-from API.testimoni import ReadTestimoni, AddTestimoni, DeleteTestimoni 
+from API.testimoni import ReadTestimoni, AddTestimoni
 
 
 
@@ -20,6 +20,5 @@ app = falcon.API()
 app.add_route('/booking', Booking())
 app.add_route('/testimoni', ReadTestimoni())
 app.add_route('/addtestimoni', AddTestimoni())
-app.add_route('/deletetestimoni', DeleteTestimoni())
 if __name__ == '__main__':
     serve(app, host='0.0.0.0', port=8000)

@@ -2,7 +2,7 @@ import falcon, jwt
 from datetime import datetime, timedelta, timezone
 
 
-from query.testimoni import query_get_all_testimoni, query_add_testimoni, query_delete_testimoni
+from query.testimoni import query_get_all_testimoni, query_add_testimoni
 
 
 class ReadTestimoni:
@@ -31,16 +31,3 @@ class AddTestimoni:
             resp.status = falcon.HTTP_401
             resp.media = {'message': 'Add testimoni gagal'}
 
-class DeleteTestimoni:
-    def on_delete(self, req, resp):
-        nama = req.media.get('nama')
-        if not nama:
-            resp.status = falcon.HTTP_BAD_REQUEST
-            return
-        testimoni = query_delete_testimoni(nama)
-        if testimoni is True:
-            resp.status = falcon.HTTP_200
-            resp.media = {'message': 'Delete testimoni berhasil'}
-        else:
-            resp.status = falcon.HTTP_401
-            resp.media = {'message': 'Delete testimoni gagal'}
