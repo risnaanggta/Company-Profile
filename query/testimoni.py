@@ -34,18 +34,6 @@ def query_add_testimoni(nama, testimoni):
         print("Connection Failed")
         return False
 
-#query update testimoni
-def query_update_testimoni(nama, testimoni):
-    conn=connectdb.test_connection()
-    if conn is not None:
-        cur = conn.cursor()
-        cur.execute("UPDATE _672020237_pb_testimoni SET testimoni = %s WHERE nama = %s ", (nama, testimoni))
-        conn.commit()
-        cur.close()
-        return True
-    else:
-        print("Connection Failed")
-        return False
 
 #query delete testimoni
 def query_delete_testimoni(nama):
@@ -61,23 +49,3 @@ def query_delete_testimoni(nama):
         return False
     
     
-
-def query_get_testimoni_by_nama(nama):
-    conn=connectdb.test_connection()
-    if conn is not None:
-        cur = conn.cursor()
-        
-        cur.execute("SELECT testimoni, nama FROM public.\"_672020237_pb_testimoni\" WHERE nama = %s", (nama,))
-        rows = cur.fetchall()
-        cur.close()
-        testimoni = []
-        for row in rows:
-            testimoni = {
-                "nama": row[0],
-                "testimoni": row[1],
-            }
-            testimoni.append(testimoni)
-        return testimoni
-    else:
-        print("Connection Failed")
-        return None

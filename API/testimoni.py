@@ -45,35 +45,3 @@ class DeleteTestimoni:
         else:
             resp.status = falcon.HTTP_401
             resp.media = {'message': 'Delete testimoni gagal'}
-
-
-class UpdateTestimoni :
-    def on_put(self, req, resp):
-        nama = req.media.get('nama') 
-        testimoni = req.media.get('testimoni')
-       
-        testimoni = req.media.get('nama')
-        if not nama or not testimoni:
-            resp.status = falcon.HTTP_BAD_REQUEST
-            return
-        testimoni = query_update_testimoni(nama, testimoni)
-        if testimoni is True:
-            resp.status = falcon.HTTP_200
-            resp.media = {'message': 'Update testimoni berhasil'}
-        else:
-            resp.status = falcon.HTTP_401
-            resp.media = {'message': 'Update testimoni gagal'}
-
-class GetTestimoniByNama:
-    def on_post(self, req, resp):
-        nama = req.media.get('nama')
-        if not nama:
-            resp.status = falcon.HTTP_BAD_REQUEST
-            return
-        testimoni = query_get_testimoni_by_nama(nama)
-        if testimoni:
-            resp.status = falcon.HTTP_200
-            resp.media = { 'testimoni': testimoni}
-        else:
-            resp.status = falcon.HTTP_401
-            resp.media = {'message': 'Testimoni not found'}
