@@ -40,7 +40,7 @@ def query_delete_testimoni(nama):
     conn=connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
-        cur.execute("DELETE FROM _672020237_pb_testimoni WHERE nama = %s", (nama,))
+        cur.execute("DELETE FROM _672020237_pb_testimoni WHERE nama = %s", (nama))
         conn.commit()
         cur.close()
         return True
