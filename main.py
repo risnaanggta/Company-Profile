@@ -29,11 +29,11 @@ def booking():
           notelp = request.form['notelp']
           tanggal = request.form['tanggal']
           people = request.form['people']
-          request = request.form['request']
+          pesan = request.form['pesan']
             
 
             # Buat data JSON yang berisi informasi produk yang akan ditambahkan
-          data = {"nama": nama, "notelp": notelp, "tanggal": tanggal, "people": people, "request": request }
+          data = {"nama": nama, "notelp": notelp, "tanggal": tanggal, "people": people, "pesan": pesan }
 
             # Kirim request POST ke API produk
           try:
