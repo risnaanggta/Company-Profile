@@ -1,4 +1,7 @@
-from flask import Flask, render_template, url_for, redirect, session
+from flask import Flask, request, redirect, url_for, session, render_template, flash
+import requests
+
+
 app = Flask(__name__) 
 #app.config["SECRET_KEY"] = "risnaanggta"     
 
