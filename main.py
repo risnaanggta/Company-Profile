@@ -37,7 +37,7 @@ def booking():
 
             # Kirim request POST ke API produk
           try:
-              response = request.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/booking', json=data)
+              response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/booking', json=data)
               if response.status_code == 201:
                   print("Reservasi added successfully")
               else:
