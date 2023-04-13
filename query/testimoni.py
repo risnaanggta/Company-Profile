@@ -9,14 +9,14 @@ def query_get_all_testimoni():
         cur.execute("SELECT nama, testimoni FROM \"_672020237_pb_testimoni\"")
         rows = cur.fetchall()
         cur.close()
-        testimoni_list = []
+        testimoni = []
         for row in rows:
-            testimoni_dict = {
+            testimoni = {
                 "nama": row[0],
                 "testimoni": row[1],
         }
-        testimoni_list.append(testimoni_dict)
-        return testimoni_list
+        testimoni.append(testimoni)
+        return testimoni
     else:
         print("Connection Failed")
         return None
