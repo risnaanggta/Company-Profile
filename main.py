@@ -34,7 +34,7 @@ def index():
 def index():
     if request.method == 'POST':
             # Ambil data produk dari form
-          nama = request.form['komentar']
+          nama = request.form['nama']
           komentar = request.form['komentar']
             
 
