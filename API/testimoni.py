@@ -20,7 +20,7 @@ class AddTestimoni:
         nama = req.media.get('nama') 
         komentar = req.media.get('komentar') 
 
-        if not nama or not testimoni:
+        if not nama or not komentar:
             resp.status = falcon.HTTP_BAD_REQUEST
             return
         testimoni = query_add_testimoni(nama, komentar)
