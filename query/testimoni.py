@@ -2,21 +2,21 @@ import connectdb
 import os
 from werkzeug.utils import secure_filename
 
-def query_get_all_testimoni():
+def query_get_all_testimonial():
     conn = connectdb.test_connection()
     if conn is not None:
         cur = conn.cursor()
         cur.execute("SELECT nama, testimoni FROM \"_672020237_pb_testimoni\"")
         rows = cur.fetchall()
         cur.close()
-        testimoni_list = []
+        testimonial = []
         for row in rows:
             testimoni = {
                 "nama": row[0],
                 "testimoni": row[1],
             }
-            testimoni_list.append(testimoni)
-        return testimoni_list
+            testimonial.append(testimoni)
+        return testimonial
     else:
         print("Connection Failed")
         return None

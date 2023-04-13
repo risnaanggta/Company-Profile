@@ -2,13 +2,13 @@ import falcon, jwt
 from datetime import datetime, timedelta, timezone
 
 
-from query.testimoni import query_get_all_testimoni, query_add_testimoni
+from query.testimoni import query_get_all_testimonial, query_add_testimoni
 
 
 class ReadTestimoni:
    def on_get(self, req, resp):
-        testimoni = query_get_all_testimoni()
-        if testimoni:
+        testimonial = query_get_all_testimonial()
+        if testimonial:
             resp.media = {"testimoni": testimoni}
             resp.status = falcon.HTTP_200
         else:
