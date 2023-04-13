@@ -100,6 +100,17 @@ def team():
 
 @app.route("/testimoni", methods=['GET', 'POST'])
 def testimoni():
+  # Request ke API produk untuk mendapatkan data produk
+  data = {}
+  try:
+    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
+    if response.status_code == 200:
+      data = response.json()
+      print(data)
+    else:
+      print("ERROR | Get testimoni data |", response.status_code)
+  except Exception as e:
+    print("ERROR | Get testimoni data |", e)
   if request.method == 'POST':
     # Ambil data produk dari form
     nama = request.form['nama']
@@ -118,17 +129,7 @@ def testimoni():
         print("ERROR | Add testimoni |", response.status_code)
     except Exception as e:
       print("ERROR | Add testimoni |", e)
-  # Request ke API produk untuk mendapatkan data produk
-  data = {}
-  try:
-    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
-    if response.status_code == 200:
-      data = response.json()
-      print(data)
-    else:
-      print("ERROR | Get testimoni data |", response.status_code)
-  except Exception as e:
-    print("ERROR | Get testimoni data |", e)
+  
 
   # Tampilkan halaman index.html dengan daftar produk
   return render_template("testimoni.html", testimoni=data)
