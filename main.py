@@ -41,11 +41,11 @@ def booking():
               if response.status_code == 201:
                   print("Reservasi added successfully")
               else:
-                  print("ERROR | Add product |", response.status_code)
+                  print("ERROR | Add booking |", response.status_code)
           except Exception as e:
-                print("ERROR | Add product |", e)
+                print("ERROR | Add booking |", e)
     else:
-        print("ERROR | Add product |", "Invalid request method")
+        print("ERROR | Add booking |", "Invalid request method")
     return render_template("booking.html")
 
 @app.route("/team")
@@ -69,11 +69,11 @@ def testimonial():
               if response.status_code == 201:
                   print("Testimoni added successfully")
               else:
-                  print("ERROR | Add product |", response.status_code)
+                  print("ERROR | Add testimoni |", response.status_code)
           except Exception as e:
-                print("ERROR | Add product |", e)
+                print("ERROR | Add testimoni |", e)
     else:
-        print("ERROR | Add product |", "Invalid request method")
+        print("ERROR | Add testimoni |", "Invalid request method")
     return render_template("testimonial.html")
 
 @app.route("/contact")
