@@ -66,7 +66,7 @@ def testimonial():
             # Kirim request POST ke API produk
           try:
               response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
-              if response.status_code == 201:
+              if response.status_code == 202:
                   print("Testimoni added successfully")
               else:
                   print("ERROR | Add testimoni |", response.status_code)
