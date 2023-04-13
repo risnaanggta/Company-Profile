@@ -9,7 +9,7 @@ class ReadTestimoni:
    def on_get(self, req, resp):
         testimonial = query_get_all_testimonial()
         if testimonial:
-            resp.media = {"testimoni": testimoni}
+            resp.media = {"testimoni": testimonial}
             resp.status = falcon.HTTP_200
         else:
             resp.status = falcon.HTTP_404
