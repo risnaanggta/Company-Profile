@@ -18,7 +18,7 @@ class ReadTestimoni:
 class AddTestimoni:
    def on_post(self, req, resp): 
         nama = req.media.get('nama') 
-        testimoni = req.media.get('testimoni') 
+        komentar = req.media.get('komentar') 
 
         if not nama or not testimoni:
             resp.status = falcon.HTTP_BAD_REQUEST
