@@ -52,9 +52,29 @@ def booking():
 def team():
   return render_template("team.html")
 
-@app.route("/testimonial")
+@app.route("/testimonial", methods=['GET', 'POST'])
 def testimonial():
-  return render_template("testimonial.html")
+    if request.method == 'POST':
+            # Ambil data produk dari form
+          nama = request.form['nama']
+          testimoni = request.form['testimoni']
+            
+
+            # Buat data JSON yang berisi informasi produk yang akan ditambahkan
+          data = {"nama": nama, "testimoni": testimoni }
+
+            # Kirim request POST ke API produk
+          try:
+              response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
+              if response.status_code == 201:
+                  print("Testimoni added successfully")
+              else:
+                  print("ERROR | Add product |", response.status_code)
+          except Exception as e:
+                print("ERROR | Add product |", e)
+    else:
+        print("ERROR | Add product |", "Invalid request method")
+    return render_template("testimonial.html")
 
 @app.route("/contact")
 def contact():
