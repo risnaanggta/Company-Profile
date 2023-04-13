@@ -111,28 +111,30 @@ def testimoni():
 
     # Kirim request POST ke API produk
     try:
-      response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/add-testimoni', json=data)
+      response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
       if response.status_code == 201:
-        flash("Testimoni added successfully", "success")
+        print("Testimoni added successfully")
       else:
-        flash(f"Failed to add testimoni: {response.status_code}", "error")
+        print("ERROR | Add testimoni |", response.status_code)
     except Exception as e:
-      flash(f"Failed to add testimoni: {e}", "error")
-  
+      print("ERROR | Add testimoni |", e)
+  else:
+    print("ERROR | Add testimoni |", "Invalid request method")
+
   # Request ke API produk untuk mendapatkan data produk
   data = {}
   try:
-    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/get-testimoni')
+    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
     if response.status_code == 200:
       data = response.json()
+      print(data)
     else:
-      flash(f"Failed to get testimoni data: {response.status_code}", "error")
+      print("ERROR | Get testimoni data |", response.status_code)
   except Exception as e:
-    flash(f"Failed to get testimoni data: {e}", "error")
+    print("ERROR | Get testimoni data |", e)
 
   # Tampilkan halaman index.html dengan daftar produk
   return render_template("testimoni.html", testimoni=data)
-
 
 @app.route("/contact")
 def contact():
