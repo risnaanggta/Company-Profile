@@ -9,17 +9,18 @@ def query_get_all_testimoni():
         cur.execute("SELECT nama, testimoni FROM \"_672020237_pb_testimoni\"")
         rows = cur.fetchall()
         cur.close()
-        testimoni = []
+        testimoni_list = []
         for row in rows:
             testimoni = {
                 "nama": row[0],
                 "testimoni": row[1],
-        }
-        testimoni.append(testimoni)
-        return testimoni
+            }
+            testimoni_list.append(testimoni)
+        return testimoni_list
     else:
         print("Connection Failed")
         return None
+
 
 def query_add_testimoni(nama, testimoni):
     conn = connectdb.test_connection()
