@@ -23,7 +23,7 @@ class AddTestimoni:
         if not nama or not testimoni:
             resp.status = falcon.HTTP_BAD_REQUEST
             return
-        testimoni = query_add_testimoni(nama, testimoni)
+        testimoni = query_add_testimoni(nama, komentar)
         if testimoni is True:
             resp.status = falcon.HTTP_200
             resp.media = {'message': 'Add testimoni berhasil'}
