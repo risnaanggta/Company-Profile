@@ -100,43 +100,41 @@ def team():
 
 @app.route("/testimoni", methods=['GET', 'POST'])
 def testimoni():
-      if request.method == 'POST':
-            # Ambil data produk dari form
-            nama = request.form['nama']
-            testimoni = request.form['testimoni']
+  if request.method == 'POST':
+    # Ambil data produk dari form
+    nama = request.form['nama']
+    testimoni = request.form['testimoni']
             
 
-            # Buat data JSON yang berisi informasi produk yang akan ditambahkan
-            data = {"nama": nama, "testimoni": testimoni }
+    # Buat data JSON yang berisi informasi produk yang akan ditambahkan
+    data = {"nama": nama, "testimoni": testimoni }
 
-            # Kirim request POST ke API produk
-            try:
-                response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
-                if response.status_code == 201:
-                    print("Testimoni added successfully")
-                else:
-                    print("ERROR | Add testimoni |", response.status_code)
-            except Exception as e:
-                  print("ERROR | Add testimoni |", e)
+    # Kirim request POST ke API produk
+    try:
+      response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
+      if response.status_code == 201:
+        print("Testimoni added successfully")
       else:
-          print("ERROR | Add testimoni |", "Invalid request method")
-    
+        print("ERROR | Add testimoni |", response.status_code)
+    except Exception as e:
+      print("ERROR | Add testimoni |", e)
+  else:
+    print("ERROR | Add testimoni |", "Invalid request method")
 
-        # Request ke API produk untuk mendapatkan data produk
-      data = {}
-      try:
-          response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
-          if response.status_code == 200:
-              data = response.json()
-              print(data)
-          else:
-              print("ERROR | Get testimoni data |", response.status_code)
-      except Exception as e:
-            print("ERROR | Get testimoni data |", e)
+  # Request ke API produk untuk mendapatkan data produk
+  data = {}
+  try:
+    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
+    if response.status_code == 200:
+      data = response.json()
+      print(data)
+    else:
+      print("ERROR | Get testimoni data |", response.status_code)
+  except Exception as e:
+    print("ERROR | Get testimoni data |", e)
 
-        # Tampilkan halaman index.html dengan daftar produk
-      return render_template("testimoni.html")
-        
+  # Tampilkan halaman index.html dengan daftar produk
+  return render_template("testimoni.html", testimoni=data)
 
 @app.route("/contact")
 def contact():
