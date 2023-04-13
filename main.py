@@ -5,10 +5,32 @@ import requests
 app = Flask(__name__) 
 #app.config["SECRET_KEY"] = "risnaanggta"     
 
-@app.route("/")
+@app.route("/", methods=['GET', 'POST'])
 def index():
-  return render_template("index.html")
+    if request.method == 'POST':
+            # Ambil data produk dari form
+          nama = request.form['nama']
+          notelp = request.form['notelp']
+          tanggal = request.form['tanggal']
+          people = request.form['people']
+          pesan = request.form['pesan']
+            
 
+            # Buat data JSON yang berisi informasi produk yang akan ditambahkan
+          data = {"nama": nama, "notelp": notelp, "tanggal": tanggal, "people": people, "pesan": pesan }
+
+            # Kirim request POST ke API produk
+          try:
+              response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/booking', json=data)
+              if response.status_code == 201:
+                  print("Reservasi added successfully")
+              else:
+                  print("ERROR | Add booking |", response.status_code)
+          except Exception as e:
+                print("ERROR | Add booking |", e)
+    else:
+        print("ERROR | Add booking |", "Invalid request method")
+    return render_template("index.html")
 @app.route("/about")
 def about():
   return render_template("about.html")
