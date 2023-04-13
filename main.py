@@ -118,9 +118,6 @@ def testimoni():
         print("ERROR | Add testimoni |", response.status_code)
     except Exception as e:
       print("ERROR | Add testimoni |", e)
-  else:
-    print("ERROR | Add testimoni |", "Invalid request method")
-
   # Request ke API produk untuk mendapatkan data produk
   data = {}
   try:
