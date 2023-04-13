@@ -98,44 +98,41 @@ def booking():
 def team():
   return render_template("team.html")
 
-def get_testimoni():
-    # Request ke API testimoni untuk mendapatkan data testimoni
-    data = []
-    try:
-        response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
-        if response.status_code == 200:
-            data = response.json()
-        else:
-            print("ERROR | Get testimoni data |", response.status_code)
-    except Exception as e:
-        print("ERROR | Get testimoni data |", e)
-    
-    # Tampilkan halaman testimoni.html dengan data testimoni
-    return render_template("testimoni.html", testimoni=data)
-
-
-# Route untuk menambahkan testimoni baru
-@app.route("/testimoni", methods=['POST'])
-def add_testimoni():
-    # Ambil data testimoni dari form
+@app.route("/testimoni", methods=['GET', 'POST'])
+def testimoni():
+  if request.method == 'POST':
+    # Ambil data produk dari form
     nama = request.form['nama']
     komentar = request.form['komentar']
-    
-    # Buat data JSON yang berisi informasi testimoni yang akan ditambahkan
-    data = {"nama": nama, "komentar": komentar}
+            
+            
+    # Buat data JSON yang berisi informasi produk yang akan ditambahkan
+    data = {"nama": nama, "komentar": komentar }
 
-    # Kirim request POST ke API testimoni
+    # Kirim request POST ke API produk
     try:
-        response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni', json=data)
-        if response.status_code == 201:
-            print("Testimoni added successfully")
-        else:
-            print("ERROR | Add testimoni |", response.status_code)
+      response = requests.post('https://backend-risna-5zn7xh2gqq-et.a.run.app/addtestimoni', json=data)
+      if response.status_code == 201:
+        print("Testimoni added successfully")
+      else:
+        print("ERROR | Add testimoni |", response.status_code)
     except Exception as e:
-        print("ERROR | Add testimoni |", e)
-  
-    # Redirect ke halaman daftar testimoni
-    return redirect('/testimoni')
+      print("ERROR | Add testimoni |", e)
+  # Request ke API produk untuk mendapatkan data produk
+  data = {}
+  try:
+    response = requests.get('https://backend-risna-5zn7xh2gqq-et.a.run.app/testimoni')
+    if response.status_code == 200:
+      data = response.json()
+      print(data)
+    else:
+      print("ERROR | Get testimoni data |", response.status_code)
+  except Exception as e:
+    print("ERROR | Get testimoni data |", e)
+
+  # Tampilkan halaman index.html dengan daftar produk
+  return render_template("testimoni.html", testimoni=data['testimoni'])
+
 @app.route("/contact")
 def contact():
   return render_template("contact.html")
