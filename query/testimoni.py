@@ -13,7 +13,7 @@ def query_get_all_testimonial():
         for row in rows:
             testimoni = {
                 "nama": row[0],
-                "komentar": row[1],
+                "komentar": row[1]
             }
             testimonial.append(testimoni)
         return testimonial
