@@ -103,11 +103,11 @@ def testimoni():
   if request.method == 'POST':
     # Ambil data produk dari form
     nama = request.form['nama']
-    testimoni = request.form['testimoni']
+    komentar = request.form['komentar']
             
 
     # Buat data JSON yang berisi informasi produk yang akan ditambahkan
-    data = {"nama": nama, "testimoni": testimoni }
+    data = {"nama": nama, "komentar": komentar }
 
     # Kirim request POST ke API produk
     try:
